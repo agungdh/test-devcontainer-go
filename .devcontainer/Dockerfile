@@ -55,4 +55,4 @@ ENV PATH=$PATH:/home/$USERNAME/go/bin
 # Install Goose CLI di home directory user vscode
 RUN go install github.com/pressly/goose/v3/cmd/goose@latest
 
-WORKDIR /workspace
+WORKDIR /workspace/test-devcontainer-go

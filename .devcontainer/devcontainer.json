@@ -2,7 +2,7 @@
   "name": "Go (Debian Full) + Bun ORM + Goose + Postgres 18 + Adminer",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app",
-  "workspaceFolder": "/workspace",
+  "workspaceFolder": "/workspace/test-devcontainer-go",
   "customizations": {
     "vscode": {
       "extensions": [

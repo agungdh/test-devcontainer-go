@@ -4,8 +4,8 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      # Mount source code ke container
-      - ..:/workspace:cached
+      # Mount source code ke container (per-project path biar harness config unik per project)
+      - ..:/workspace/test-devcontainer-go:cached
       # Auth Claude & OpenCode (harness butuh tulis, jangan ro)
       - ${HOME}/.claude.json:/home/vscode/.claude.json
       - ${HOME}/.config/opencode:/home/vscode/.config/opencode
