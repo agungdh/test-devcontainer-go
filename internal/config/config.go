@@ -23,7 +23,7 @@ func getenv(key, fallback string) string {
 
 func Load() *Config {
 	return &Config{
-		DBHost:     getenv("DB_HOST", "localhost"),
+		DBHost:     getenv("DB_HOST", "postgres"),
 		DBPort:     getenv("DB_PORT", "5432"),
 		DBUser:     getenv("DB_USER", "postgres"),
 		DBPassword: getenv("DB_PASSWORD", "postgres"),
