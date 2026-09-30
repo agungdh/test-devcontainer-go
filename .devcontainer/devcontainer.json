@@ -7,7 +7,9 @@
     "vscode": {
       "extensions": [
         "golang.go",
-        "tamasfe.even-better-toml"
+        "tamasfe.even-better-toml",
+        "ms-azuretools.vscode-containers",
+        "eamodio.gitlens"
       ]
     }
   },
