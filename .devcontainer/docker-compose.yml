@@ -9,6 +9,7 @@ services:
       # Auth Claude & OpenCode (harness butuh tulis, jangan ro)
       - ${HOME}/.claude.json:/home/vscode/.claude.json
       - ${HOME}/.config/opencode:/home/vscode/.config/opencode
+      - ${HOME}/.commandcode:/home/vscode/.commandcode
       # Git Config & SSH Key dari host
       - ${HOME}/.gitconfig:/home/vscode/.gitconfig
       - ${HOME}/.ssh:/home/vscode/.ssh
