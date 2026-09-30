@@ -6,12 +6,12 @@ services:
     volumes:
       # Mount source code ke container
       - ..:/workspace:cached
-      # Auth Claude & OpenCode
-      - ${HOME}/.claude.json:/home/vscode/.claude.json:ro
-      - ${HOME}/.config/opencode:/home/vscode/.config/opencode:ro
+      # Auth Claude & OpenCode (harness butuh tulis, jangan ro)
+      - ${HOME}/.claude.json:/home/vscode/.claude.json
+      - ${HOME}/.config/opencode:/home/vscode/.config/opencode
       # Git Config & SSH Key dari host
-      - ${HOME}/.gitconfig:/home/vscode/.gitconfig:ro
-      - ${HOME}/.ssh:/home/vscode/.ssh:ro
+      - ${HOME}/.gitconfig:/home/vscode/.gitconfig
+      - ${HOME}/.ssh:/home/vscode/.ssh
     command: sleep infinity
     environment:
       - LANG=en_US.UTF-8

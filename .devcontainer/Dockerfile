@@ -35,7 +35,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_24.x -o /tmp/nodesource_setup.sh
     && apt-get install -y nodejs \
     && rm -rf /var/lib/apt/lists/* /tmp/nodesource_setup.sh \
     && node -v && npm -v \
-    && npm i -g --allow-scripts=@anthropic-ai/claude-code command-code @anthropic-ai/claude-code opencode-ai \
+    && npm i -g --allow-scripts=@anthropic-ai/claude-code command-code @anthropic-ai/claude-code @opencode/cli \
     && npm cache clean --force \
     && command-code --version && claude --version && opencode --version
 
