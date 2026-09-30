@@ -1,15 +1,25 @@
 FROM debian:13
 
-# Install Go dari repo Debian + dev tools + locales (fix setlocale warning)
+# Install Go dari repo Debian + dev tools + locales (fix setlocale warning) + net & sys tools
 RUN apt-get update && apt-get install -y \
     golang-go \
     git \
     curl \
+    wget \
+    nano \
     build-essential \
     unzip \
+    zip \
+    7zip \
     ca-certificates \
     sudo \
     locales \
+    iputils-ping \
+    htop \
+    btop \
+    screen \
+    fastfetch \
+    gdu \
     && rm -rf /var/lib/apt/lists/* \
     && sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen \
     && locale-gen en_US.UTF-8 \
