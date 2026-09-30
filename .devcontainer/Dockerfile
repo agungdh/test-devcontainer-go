@@ -1,6 +1,6 @@
 FROM debian:13
 
-# Install Go dari repo Debian + dev tools
+# Install Go dari repo Debian + dev tools + locales (fix setlocale warning)
 RUN apt-get update && apt-get install -y \
     golang-go \
     git \
@@ -9,7 +9,15 @@ RUN apt-get update && apt-get install -y \
     unzip \
     ca-certificates \
     sudo \
-    && rm -rf /var/lib/apt/lists/*
+    locales \
+    && rm -rf /var/lib/apt/lists/* \
+    && sed -i '/en_US.UTF-8/s/^# //g' /etc/locale.gen \
+    && locale-gen en_US.UTF-8 \
+    && update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+
+ENV LANG=en_US.UTF-8 \
+    LANGUAGE=en_US:en \
+    LC_ALL=en_US.UTF-8
 
 # Buat user non-root 'vscode' dengan akses sudo tanpa password
 ARG USERNAME=vscode
