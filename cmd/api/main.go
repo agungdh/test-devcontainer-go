@@ -15,6 +15,7 @@ import (
 
 	"todoapp/internal/config"
 	"todoapp/internal/database"
+	apidocs "todoapp/internal/docs"
 	"todoapp/internal/todo"
 	"todoapp/pkg/response"
 )
@@ -51,6 +52,7 @@ func main() {
 	r.Route("/api/v1", func(r chi.Router) {
 		todo.RegisterRoutes(r, handler)
 	})
+	apidocs.RegisterRoutes(r, apidocs.NewHandler())
 
 	srv := &http.Server{Addr: cfg.Addr(), Handler: r}
 
