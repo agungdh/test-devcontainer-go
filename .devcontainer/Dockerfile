@@ -29,6 +29,16 @@ ENV LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
 
+# Install Node.js 24 dari NodeSource + global CLI: command-code, opencode, claude-code
+RUN curl -fsSL https://deb.nodesource.com/setup_24.x -o /tmp/nodesource_setup.sh \
+    && bash /tmp/nodesource_setup.sh \
+    && apt-get install -y nodejs \
+    && rm -rf /var/lib/apt/lists/* /tmp/nodesource_setup.sh \
+    && node -v && npm -v \
+    && npm i -g --allow-scripts=@anthropic-ai/claude-code command-code @anthropic-ai/claude-code opencode-ai \
+    && npm cache clean --force \
+    && command-code --version && claude --version && opencode --version
+
 # Buat user non-root 'vscode' dengan akses sudo tanpa password
 ARG USERNAME=vscode
 ARG USER_UID=1000
