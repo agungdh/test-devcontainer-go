@@ -1,0 +1,44 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      # Mount source code ke container
+      - ..:/workspace:cached
+      # Auth Claude & OpenCode
+      - ${HOME}/.claude.json:/home/vscode/.claude.json:ro
+      - ${HOME}/.config/opencode:/home/vscode/.config/opencode:ro
+      # Git Config & SSH Key dari host
+      - ${HOME}/.gitconfig:/home/vscode/.gitconfig:ro
+      - ${HOME}/.ssh:/home/vscode/.ssh:ro
+    command: sleep infinity
+    environment:
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USER=postgres
+      - DB_PASSWORD=postgres
+      - DB_NAME=be_app_dev
+
+  postgres:
+    image: postgres:18
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: be_app_dev
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3000:8080"
+    environment:
+      ADMINER_DEFAULT_SERVER: postgres
+
+volumes:
+  pgdata:
